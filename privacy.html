@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://jjt.dy191.com/ -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>privacy policy</title>
+    <style type="text/css">
+        @charset "utf-8";
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+
+        .content {
+            max-width: 1024px;
+            margin: auto;
+            color: #333333;
+            padding: 30px;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 50px;
+            text-align: justify;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            margin: 30px 0 10px;
+            font-weight: 700;
+        }
+    </style>
+    <style type="text/css" abt="234"></style>
+    <script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+    (function() {
+        function A() {}
+        A.prototype = {
+            rules: {
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var aa = function(){
+            var all = document.body.querySelectorAll("#content_left div,#content_left table");
+            for(var i = 0; i < all.length; i++){
+                if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+            }
+            all = document.body.querySelectorAll('.result.c-container[id="1"]');
+            //if(all.length == 1) return;
+            for(var i = 0; i < all.length; i++){
+                if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                    all[i].style.display= "none";all[i].style.visibility='hidden';
+                }
+            }
+        }
+        aa();
+        document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+    };
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+    if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+        document.cookie='player_forcedType=h5_VOD'
+        if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+            console.log('no reload')
+        }else{
+            location.reload()
+            localStorage.reloadTime = Date.now();
+        }
+    }
+}
+</script>
+    <style type="text/css">
+        object,
+        embed {
+            -webkit-animation-duration: .001s;
+            -webkit-animation-name: playerInserted;
+            -ms-animation-duration: .001s;
+            -ms-animation-name: playerInserted;
+            -o-animation-duration: .001s;
+            -o-animation-name: playerInserted;
+            animation-duration: .001s;
+            animation-name: playerInserted;
+        }
+
+        @-webkit-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-ms-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-o-keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes playerInserted {
+            from {
+                opacity: 0.99;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body style="">
+    <div class="content">
+        <h3>Privacy Policy</h3>
+        <p>This app respects and protects the privacy of all users who use the service. In order to provide you with
+            more accurate and personalized services, this app will use and disclose your personal information in
+            accordance with this Privacy Policy.
+            However, this application will treat this information with a high degree of diligence and prudence. Except
+            as otherwise provided in this Privacy Policy, this application will not disclose or provide this
+            information to third parties without your prior permission.
+            This app will update this privacy policy from time to time. By agreeing to this Application Services Use
+            Agreement, you are deemed to have agreed to the entire content of this Privacy Policy.
+            This Privacy Policy is an integral part of this Application Service Agreement. </p>
+        <p class="title">1. Scope</p>
+        <p>(a) When you register for the user in this application, your consent and confirmation will require you to
+            provide some personal information, such as name, gender, age, and birth. Date, ID number (or passport
+            number), phone number, mailing address, address, email address, avatar, etc. </p>
+        <p>(b) Your information is automatically received and recorded by the App, including but not limited to your IP
+            address, language used, date and time of access, hardware and software features, and your needs. Records
+            and other data;</p>
+        <p>(c) User personal data obtained by the application from a business partner through legal means. </p>
+        <p>(d) Some of the features of this app require access to your phone data and operating privileges including:
+            photo album, camera, contacts, phone, SMS, microphone, etc. </p>
+        You understand and agree that the following information does not apply to this Privacy Policy: <p></p>
+        <p>(i) Keyword information that you enter when using the search service provided by this app;</p>
+        <p>(ii) Information about the information you have collected in this app, including but not limited to
+            participation, transaction information and evaluation details;</p>
+        <p>(iii) Violation of the law or violation of this Code of Conduct and the actions that this application has
+            taken against you. </p>
+        <p class="title">2. Information usage</p>
+        <p>(a) This application does not provide, sell, rent, share or trade your personal information to any unrelated
+            third party, unless you have obtained your permission in advance, or the third party and the application
+            (including the affiliate of the application) Serving you individually or collectively, and after the
+            service is over, it will be banned from accessing all such materials that it has previously been able to
+            access. </p>
+        <p>(b) This application also does not allow any third party to collect, edit, sell or distribute your personal
+            information in any way. Any user of this application platform who engages in the above activities, once
+            found, the application has the right to immediately terminate the service agreement with the user. </p>
+        <p>(c) For the purpose of serving the User, the App may use your personal information to provide you with
+            information of interest to you, including but not limited to, to send you service information, or to share
+            information with the Application Partner so that They send you information about their services (the latter
+            requires your prior consent). </p>
+        <p class="title">3. Information Disclosure</p>
+        <p>In the following circumstances, this application will disclose your personal information in whole or in part
+            according to your personal wishes or the law:</p>
+        <p>(a) Disclose to third parties with your prior consent;</p>
+        <p>(b) To provide the products and services you request, you must share your personal information with third
+            parties;</p>
+        <p>(c) Disclose to third parties or administrative or judicial authorities in accordance with the relevant
+            provisions of the law, or at the request of the administrative or judicial authorities;</p>
+        <p>(d) If you have violated relevant Chinese laws, regulations or this application service agreement or related
+            rules, you need to disclose it to third parties;</p>
+        <p>(e) If you are a qualified IP Complainant and have filed a complaint, it should be disclosed to the
+            Respondent at the request of the Complainant so that both parties can handle possible rights disputes;</p>
+        <p>(f) In a transaction created on this application platform, if any party to the transaction performs or
+            partially fulfills the transaction obligation and requests for information disclosure, the application has
+            the right to decide to provide the user with the contact of the counterparty. Ways and other necessary
+            information to facilitate the completion of the transaction or the resolution of the dispute. </p>
+        <p>(g) Other disclosures that this application considers appropriate in accordance with laws, regulations or
+            website policies. </p>
+        <p class="title">4. Information Storage and Exchange</p>
+        <p>The information and materials collected by you in this application will be stored on the application and/or
+            the servers of its affiliates, which may be sent to your country, region or location where the application
+            collects information and materials. It is accessed, stored and displayed outside the country and abroad.
+        </p>
+        <p class="title">5. Information Security</p>
+        <p>(a) This application account has security protection. Please keep your username and password information
+            safe. This application will ensure that your information is not lost, not abused or altered, by security
+            measures such as encrypting user passwords. Despite the aforementioned security measures, please also note
+            that there are no “perfect security measures” on the information network. </p>
+        <p>(b) When using this application web service for online transactions, you will inevitably disclose your
+            personal information, such as contact information or postal address, to the counterparty or potential
+            counterparty. Please protect your personal information and provide it to others only when necessary. If you
+            find that your personal information is leaked, especially if the application username and password are
+            leaked, please contact this application customer service immediately so that the application can take
+            corresponding measures. </p>
+        <p class="title">6.Changes to this Privacy Policy</p>
+        <p>(a) If we decide to change our privacy policy, we will post those changes in this policy, on our website,
+            and where we deem appropriate, so that you can understand how we collect and use your personal information
+            and who can access it. This information, and under what circumstances we will disclose this information.
+        </p>
+        <p>(b) The company reserves the right to modify this policy at any time, so please check it frequently. In the
+            event of a material change to this policy, the Company will notify you by notice on the website. </p>
+        <p class="title">7.Disclaimer</p>
+        <p>Except for the exemption provided in Article 3 above, this website is not subject to any liability in the
+            following cases:</p>
+        <p>(a) Any disclosure of personal data as a result of notifying the user's password or sharing the registered
+            account with others. </p>
+        <p>(b) Any disclosure, loss, theft or tampering of personal data caused by hacker attacks, computer virus
+            intrusion or seizures, temporary closures caused by government regulations, etc. </p>
+    </div>
+
+
+</body>
+
+</html>
